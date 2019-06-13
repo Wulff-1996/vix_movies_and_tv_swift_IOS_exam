@@ -50,6 +50,7 @@ class SlidingViewController: UIViewController
             self.discoverViewController?.shouldBeUpdated.toggle()
             self.discoverViewController?.resetPage()
             self.discoverViewController?.resetMoviesAndTvs()
+            self.discoverViewController?.category = Constants.movieCategories.POPULAR
             self.dismiss(animated: true, completion: nil)
         }
         present(alertBov, animated: true, completion: nil)

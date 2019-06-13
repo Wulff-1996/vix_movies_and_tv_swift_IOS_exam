@@ -26,7 +26,7 @@ class Constants
     {
         static let POPULAR = "popular"
         static let TOP_RATED = "top_rated"
-        static let ON_AIR = "on_air"
+        static let ON_AIR = "on_the_air"
         static let AIRING_TODAY = "airing_today"
     }
     
