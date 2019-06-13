@@ -17,6 +17,7 @@
 		23CDAD3722B2B0BC005242E8 /* TVSeasonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CDAD3622B2B0BC005242E8 /* TVSeasonsTableViewController.swift */; };
 		23CDAD3922B2B704005242E8 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CDAD3822B2B704005242E8 /* Season.swift */; };
 		23CDAD3B22B2BC0E005242E8 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CDAD3A22B2BC0E005242E8 /* SeasonCell.swift */; };
+		23CDAD5B22B2DBF2005242E8 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CDAD5A22B2DBF2005242E8 /* CustomTabBar.swift */; };
 		23E91C372283489A00ACC6CC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E91C362283489A00ACC6CC /* SignUpViewController.swift */; };
 		23E91C39228348DF00ACC6CC /* SignInMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E91C38228348DF00ACC6CC /* SignInMenuViewController.swift */; };
 		23E91C3B2283496800ACC6CC /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E91C3A2283496800ACC6CC /* SignInViewController.swift */; };
@@ -62,6 +63,7 @@
 		23CDAD3622B2B0BC005242E8 /* TVSeasonsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeasonsTableViewController.swift; sourceTree = "<group>"; };
 		23CDAD3822B2B704005242E8 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		23CDAD3A22B2BC0E005242E8 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
+		23CDAD5A22B2DBF2005242E8 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		23E91C362283489A00ACC6CC /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		23E91C38228348DF00ACC6CC /* SignInMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMenuViewController.swift; sourceTree = "<group>"; };
 		23E91C3A2283496800ACC6CC /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				23CDAD2A22B0068E005242E8 /* Video.swift */,
 				23CDAD3822B2B704005242E8 /* Season.swift */,
 				23CDAD3A22B2BC0E005242E8 /* SeasonCell.swift */,
+				23CDAD5A22B2DBF2005242E8 /* CustomTabBar.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				23F25BB2229494330090BC05 /* RecommendationsCollectionViewController.swift in Sources */,
 				23E91C422284867600ACC6CC /* AlertBox.swift in Sources */,
 				23F25BAB2294409C0090BC05 /* CustomTabBarController.swift in Sources */,
+				23CDAD5B22B2DBF2005242E8 /* CustomTabBar.swift in Sources */,
 				23F2C1CB228DAAB000049505 /* MovieRepository.swift in Sources */,
 				23F25BA722941E310090BC05 /* RoundedButton.swift in Sources */,
 				23E91C3B2283496800ACC6CC /* SignInViewController.swift in Sources */,

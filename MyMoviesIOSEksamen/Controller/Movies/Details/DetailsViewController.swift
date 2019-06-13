@@ -18,7 +18,6 @@ class DetailsViewController: UIViewController
     @IBOutlet weak var mReleaseDate: UILabel!
     @IBOutlet weak var mRuntime: UILabel!
     @IBOutlet weak var mVoteCount: UILabel!
-    
     @IBOutlet weak var videoView: WKYTPlayerView!
     
     let movieRepo = MovieRepository()
@@ -106,12 +105,11 @@ class DetailsViewController: UIViewController
         
         let drawerView = self.addDrawerView(withViewController: drawerViewController)
         drawerView.isOpaque = true
-        drawerView.snapPositions = [.collapsed, .partiallyOpen, .open]
-        drawerView.insetAdjustmentBehavior = .automatic
+        drawerView.snapPositions = [.collapsed, .open]
+        drawerView.insetAdjustmentBehavior = .never
         drawerView.backgroundEffect = UIBlurEffect(style: .extraLight)
         drawerView.cornerRadius = 0
-        drawerView.collapsedHeight = 200
-        drawerView.partiallyOpenHeight = 600
+        drawerView.collapsedHeight = 240
     }
 
     @IBAction func doBtnGoBack(_ sender: Any)
