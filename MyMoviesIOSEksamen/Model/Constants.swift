@@ -18,7 +18,6 @@ class Constants
     struct movieCategories
     {
         static let POPULAR = "popular"
-        static let LATEST = "latest"
         static let UPCOMING = "upcoming"
         static let TOP_RATED = "top_rated"
         static let NOW_PLAYING = "now_playing"
@@ -26,7 +25,6 @@ class Constants
     struct tvCategories
     {
         static let POPULAR = "popular"
-        static let LATEST = "latest"
         static let TOP_RATED = "top_rated"
         static let ON_AIR = "on_air"
         static let AIRING_TODAY = "airing_today"
@@ -47,7 +45,6 @@ class Constants
          items.append(movieCategories.UPCOMING)
          items.append(movieCategories.NOW_PLAYING)
          items.append(movieCategories.TOP_RATED)
-         items.append(movieCategories.LATEST)
         return items
     }
     
@@ -55,7 +52,6 @@ class Constants
     {
         var items = [String]()
         items.append(tvCategories.POPULAR)
-        items.append(tvCategories.LATEST)
         items.append(tvCategories.ON_AIR)
         items.append(tvCategories.AIRING_TODAY)
         items.append(tvCategories.TOP_RATED)

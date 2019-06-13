@@ -30,7 +30,8 @@ class SlidingViewController: UIViewController
         MenuHelper.mapGestureStateToInteractor(
             gestureState: sender.state,
             progress: progress,
-            interactor: interactor){
+            interactor: interactor)
+        {
                 self.dismiss(animated: true, completion: nil)
         }
     }
@@ -44,16 +45,12 @@ class SlidingViewController: UIViewController
     {
         let alertBov = AlertBox.createAlertBox(title: "Entertainment type", message: "Select an entertainment type.", options: Constants.getEntertainmentTypes())
         { (type) in
-            if self.discoverViewController?.entertainmentType != type
-            {
-                //  update the view
-                self.discoverViewController?.entertainmentType = type
-                self.discoverViewController?.shouldBeUpdated.toggle()
-                self.discoverViewController?.resetPage()
-                self.discoverViewController?.resetMoviesAndTvs()
-                
-                self.dismiss(animated: true, completion: nil)
-            }
+            //  update the view
+            self.discoverViewController?.entertainmentType = type
+            self.discoverViewController?.shouldBeUpdated.toggle()
+            self.discoverViewController?.resetPage()
+            self.discoverViewController?.resetMoviesAndTvs()
+            self.dismiss(animated: true, completion: nil)
         }
         present(alertBov, animated: true, completion: nil)
     }
@@ -71,16 +68,12 @@ class SlidingViewController: UIViewController
         }
         let alertBox = AlertBox.createAlertBox(title: "Category", message: "Select a category.", options: options)
         { (type) in
-            if self.discoverViewController?.category != type
-            {
-                //  update the origin view
-                self.discoverViewController?.category = type
-                self.discoverViewController?.shouldBeUpdated.toggle()
-                self.discoverViewController?.resetPage()
-                self.discoverViewController?.resetMoviesAndTvs()
-                
-                self.dismiss(animated: true, completion: nil)
-            }
+            //  update the origin view
+            self.discoverViewController?.category = type
+            self.discoverViewController?.shouldBeUpdated.toggle()
+            self.discoverViewController?.resetPage()
+            self.discoverViewController?.resetMoviesAndTvs()
+            self.dismiss(animated: true, completion: nil)
         }
         self.present(alertBox, animated: true, completion: nil)
     }
@@ -90,14 +83,7 @@ class SlidingViewController: UIViewController
         do
         {
             try Auth.auth().signOut()
-            
-            self.dismiss(animated: true, completion:
-                {
-                    self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion:
-                        {
-                        self.presentingViewController?.dismiss(animated: true, completion: nil)
-                    })
-            })
+            self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         }
         catch let err
         {

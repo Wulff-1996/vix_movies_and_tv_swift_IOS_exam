@@ -30,10 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         //  skip signin if user is logged in
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let signInStoryboard =  UIStoryboard(name: "SignIn", bundle: nil)
-        let moviesStoryboard = UIStoryboard(name: "Movies", bundle: nil)
+        let moviesStoryboard = UIStoryboard(name: "Discover", bundle: nil)
         
         let startSigninVC = signInStoryboard.instantiateViewController(withIdentifier: "signInMenu")
-        let startMoviesVC = moviesStoryboard.instantiateViewController(withIdentifier: "MoviesTabbar")
+        let startMoviesVC = moviesStoryboard.instantiateViewController(withIdentifier: "Discover")
         
         
         // check if user is logged

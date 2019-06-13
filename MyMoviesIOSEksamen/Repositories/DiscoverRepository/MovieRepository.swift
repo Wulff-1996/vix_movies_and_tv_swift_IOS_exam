@@ -48,7 +48,7 @@ class MovieRepository
     
     public func getRecommendations(id: Int,forPage: Int,  completion: @escaping (_ movies: [Movie]) -> ())
     {
-        let url = NSURL(string: "\(API_ENDPOINT)\(id)/similar?\(API_KEY)&\(LANGUANGE)&(PAGE)\(forPage)")
+        let url = NSURL(string: "\(API_ENDPOINT)\(id)/similar?\(API_KEY)&\(LANGUANGE)&\(PAGE)\(forPage)")
         DataTask.createDataTask(url: url! as URL)
         { (result) in
             if let data = result?.value(forKey: "results") as? NSArray
@@ -59,6 +59,40 @@ class MovieRepository
                     movies.append(ParseJson.parseToMovie(data: m as! NSDictionary))
                 }
                 completion(movies)
+            }
+        }
+    }
+    
+    public func getMovieCredits(movieId: Int, completion: @escaping (_ casts: [Cast]) -> ())
+    {
+        let url = NSURL(string: "\(API_ENDPOINT)\(movieId)/credits?\(API_KEY)")
+        DataTask.createDataTask(url: url! as URL)
+        { (result) in
+            if let data = result?.value(forKey: "cast") as? NSArray
+            {
+                var casts = [Cast]()
+                for cast in data
+                {
+                    casts.append(ParseJson.parseToCast(data: cast as! NSDictionary))
+                }
+                completion(casts)
+            }
+        }   
+    }
+    
+    public func getMovieVideos(movieId: Int, completion: @escaping (_ videos: [Video]) -> ())
+    {
+        let url = NSURL(string: "\(API_ENDPOINT)\(movieId)/videos?\(API_KEY)&\(LANGUANGE)")
+        DataTask.createDataTask(url: url! as URL)
+        { (result) in
+            if let data = result?.value(forKey: "results") as? NSArray
+            {
+                var videos = [Video]()
+                for video in data
+                {
+                    videos.append(ParseJson.parseToVideo(data: video as! NSDictionary))
+                }
+                completion(videos)
             }
         }
     }

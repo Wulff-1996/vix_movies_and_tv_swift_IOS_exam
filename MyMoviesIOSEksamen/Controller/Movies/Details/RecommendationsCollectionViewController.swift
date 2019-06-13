@@ -62,12 +62,17 @@ class RecommendationsCollectionViewController: UICollectionViewController, UICol
         {
             self.movieRepo.getRecommendations(id: entertainment.id!, forPage: currentPage)
             { (movies) in
-                self.entertainments.append(contentsOf: movies)
+                self.entertainments.append(contentsOf: movies as [Entertainment])
                 self.reloadCollectionView()
             }
         }
-        else
+        else if self.entertainment.type == Constants.entertainmentTypes.TV
         {
+            self.tvRepo.getRecommendations(id: entertainment.id!, forPage: currentPage)
+            { (tvs) in
+                self.entertainments.append(contentsOf: tvs as [Entertainment])
+                self.reloadCollectionView()
+            }
         }
     }
 
@@ -117,7 +122,6 @@ class RecommendationsCollectionViewController: UICollectionViewController, UICol
                 cell.posterImageview.image = UIImage(named: "placeholderimage.jpg")
             }
         }
-        
         return cell
     }
     

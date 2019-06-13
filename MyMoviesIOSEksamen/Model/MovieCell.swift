@@ -13,13 +13,15 @@ class MovieCell: UICollectionViewCell
     
     @IBOutlet weak var posterImageview: UIImageView!
     
-    override func awakeFromNib() {
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
         // Initialization code
     }
     
     
-    public func configure (image: UIImage){
+    public func configure (image: UIImage)
+    {
         posterImageview.image = image
     }
 }

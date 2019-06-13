@@ -31,8 +31,26 @@ class AlertBox{
         
         for type in options
         {
-            alertBox.addAction(UIAlertAction(title: type, style: .default, handler: { (action: UIAlertAction!) in
+            alertBox.addAction(UIAlertAction(title: type, style: .default, handler:
+                { (action: UIAlertAction!) in
                 completion(type)
+            }))
+        }
+        
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        alertBox.addAction(cancelAction)
+        return alertBox
+    }
+    
+    public static func createAlertBoxForVideos(title: String, message: String, videos: [Video], completion: @escaping (_ youTubeId: String)->()) -> UIAlertController
+    {
+        let alertBox = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        for video in videos
+        {
+            alertBox.addAction(UIAlertAction(title: video.name!, style: .default, handler:
+                { (action: UIAlertAction!) in
+                    completion(video.youTuebeId!)
             }))
         }
         

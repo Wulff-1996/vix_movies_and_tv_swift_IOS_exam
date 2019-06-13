@@ -11,6 +11,7 @@ target 'MyMoviesIOSEksamen' do
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKLoginKit'
 	pod 'NavigationDrawer'
-	pod "DrawerView"
+	pod 'DrawerView'
+  pod 'YoutubePlayer-in-WKWebView', '~> 0.2.0'
 
 end

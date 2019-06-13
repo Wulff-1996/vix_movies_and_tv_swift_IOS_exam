@@ -48,7 +48,7 @@ class DiscoverViewController: UIViewController,
         self.mCollectionView.delegate = self
         self.mCollectionView.dataSource = self
         
-        self.currentSelectedType.titleLabel!.text = "\(self.entertainmentType) \(self.category)"        
+        self.currentSelectedType.setTitle("\(self.entertainmentType) -> \(self.category)", for: .normal)
         movieRepo.getAll(category: self.category, forPage: self.currentPage)
         { (movies) in
             self.entertainments = movies
@@ -60,7 +60,7 @@ class DiscoverViewController: UIViewController,
     {
         if self.shouldBeUpdated == true
         {
-            self.currentSelectedType.titleLabel?.text = "\(self.entertainmentType) \(self.category)"
+            self.currentSelectedType.setTitle("\(self.entertainmentType) -> \(self.category)", for: .normal)
             self.reloadCollectionView()
             self.scrollToTop()
             self.fetchData()
@@ -74,6 +74,7 @@ class DiscoverViewController: UIViewController,
        if let details = segue.destination as? DetailsViewController
         {
             details.entertainment = self.selectedEntertainment!
+            global.entertainment = self.selectedEntertainment!
         }
         if let slidingPandel = segue.destination as? SlidingViewController
         {
@@ -82,7 +83,6 @@ class DiscoverViewController: UIViewController,
             slidingPandel.transitioningDelegate = self
         }
     }
-    
     
     func reloadCollectionView()
     {
@@ -216,11 +216,8 @@ class DiscoverViewController: UIViewController,
     }
 }
 
-
-
 extension DiscoverViewController: UIViewControllerTransitioningDelegate
 {
-    
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning?
     {
         return PresentMenuAnimator()

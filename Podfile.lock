@@ -70,6 +70,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - NavigationDrawer (1.0.0)
+  - YoutubePlayer-in-WKWebView (0.2.5)
 
 DEPENDENCIES:
   - DrawerView
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - NavigationDrawer
+  - YoutubePlayer-in-WKWebView (~> 0.2.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -96,6 +98,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - nanopb
     - NavigationDrawer
+    - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -113,7 +116,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NavigationDrawer: bc637c0a1700b04f8cd9a5e88b709f6793ca6ac6
+  YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
 
-PODFILE CHECKSUM: 34c1c96e9ad68d7d78f9938679a2dfe240a4115d
+PODFILE CHECKSUM: a23ecc003b2dcf64ae31b175eee477cd3207a9f8
 
 COCOAPODS: 1.6.1
