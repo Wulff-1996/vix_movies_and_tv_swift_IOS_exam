@@ -23,11 +23,10 @@ class DetailsViewController: UIViewController
     let movieRepo = MovieRepository()
     let tvRepo = TVRepository()
     var entertainment = Entertainment()
-
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         let url = URL(string: "\(entertainment.posterPath!)")!
         ImageService.getImage(withUrl: url)
         { image in
@@ -79,29 +78,16 @@ class DetailsViewController: UIViewController
     func setupDrawer()
     {
         var drawerIdentifier: String?
-        var thirdIcon: String?
-        var thirdTitle: String?
         if entertainment.type == Constants.entertainmentTypes.MOVIES
         {
             drawerIdentifier = "MoviesDrawerViewController"
-            thirdIcon = "castIcon"
-            thirdTitle = "cast"
         }
         else if entertainment.type == Constants.entertainmentTypes.TV
         {
             drawerIdentifier = "TVsDrawerViewController"
-            thirdIcon = "list_icon"
-            thirdTitle = "seasons"
         }
         
         let drawerViewController = self.storyboard!.instantiateViewController(withIdentifier: drawerIdentifier!) as! CustomTabBarController
-        
-        drawerViewController.firstIcon = "aboutTabbarIcon"
-        drawerViewController.secondIcon = "recommendationsIcon"
-        drawerViewController.thirdIcon = thirdIcon!
-        drawerViewController.firstTitle = "about"
-        drawerViewController.secondTitle = "similir"
-        drawerViewController.thirdTitle = thirdTitle!
         
         let drawerView = self.addDrawerView(withViewController: drawerViewController)
         drawerView.isOpaque = true

@@ -29,7 +29,6 @@ class RecommendationsCollectionViewController: UICollectionViewController, UICol
         fetchData()
     }
     
-    
     func reloadCollectionView()
     {
         DispatchQueue.main.async{self.collectionView.reloadData()}
@@ -85,7 +84,6 @@ class RecommendationsCollectionViewController: UICollectionViewController, UICol
     }
 
     // MARK: UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int
     {
         // #warning Incomplete implementation, return the number of sections
@@ -101,7 +99,7 @@ class RecommendationsCollectionViewController: UICollectionViewController, UICol
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MovieCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EntertainmentCell
         
         //  see if the next page is reached
         updatePage(row: indexPath.row)
@@ -109,18 +107,15 @@ class RecommendationsCollectionViewController: UICollectionViewController, UICol
         // Configure the cell
         if let path = entertainments[indexPath.row].posterPath
         {
-            if !path.isEmpty
-            {
-                let url = URL(string: "\(path)")!
-                ImageService.getImage(withUrl: url)
-                { image in
-                    cell.posterImageview.image = image
-                }
+            let url = URL(string: "\(path)")!
+            ImageService.getImage(withUrl: url)
+            { image in
+                cell.posterImageview.image = image
             }
-            else
-            {
-                cell.posterImageview.image = UIImage(named: "placeholderimage.jpg")
-            }
+        }
+        else
+        {
+            cell.posterImageview.image = UIImage(named: "placeholderimage.jpg")
         }
         return cell
     }
@@ -133,7 +128,7 @@ class RecommendationsCollectionViewController: UICollectionViewController, UICol
         
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
-            + (flowLayout.minimumInteritemSpacing * CGFloat(noOfCellsInRow - 1))
+            + (flowLayout.minimumInteritemSpacing * CGFloat(noOfCellsInRow))
         
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(noOfCellsInRow))
         

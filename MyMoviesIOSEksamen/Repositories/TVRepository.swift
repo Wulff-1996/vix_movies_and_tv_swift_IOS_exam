@@ -70,9 +70,12 @@ class TVRepository
             if let data = result?.value(forKey: "results") as? NSArray
             {
                 var videos = [Video]()
-                for video in data
+                for entry in data
                 {
-                    videos.append(ParseJson.parseToVideo(data: video as! NSDictionary))
+                    if let video = Video(JSON: entry as! [String: Any])
+                    {
+                        videos.append(video)
+                    }
                 }
                 completion(videos)
             }

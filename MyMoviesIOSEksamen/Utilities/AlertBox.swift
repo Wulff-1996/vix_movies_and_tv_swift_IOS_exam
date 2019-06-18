@@ -17,14 +17,11 @@ class AlertBox{
         let alertBox = UIAlertController()
         alertBox.title = title
         alertBox.message = message
-        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (_) in
-        }
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertBox.addAction(cancelAction)
         return alertBox
     }
-    
-    // static func getImage(withUrl url: URL, completion: @escaping (_ image: UIImage?) -> ())
-    
+        
     public static func createAlertBox(title: String, message: String, options: [String], completion: @escaping (_ type: String)->()) -> UIAlertController
     {
         let alertBox = UIAlertController(title: title, message: message, preferredStyle: .alert)

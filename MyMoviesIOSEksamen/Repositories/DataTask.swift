@@ -14,7 +14,7 @@ class DataTask: URLSession
     {
         //fetching the data from the url
         URLSession.shared.dataTask(with: (url as URL?)!, completionHandler:
-            {(data, response, error) -> Void in
+            {(data, response, error) in
                 if error == nil
                 {
                     if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary

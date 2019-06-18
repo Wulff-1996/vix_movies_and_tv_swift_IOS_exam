@@ -10,43 +10,53 @@ import Foundation
 
 class ParseJson
 {
-    public static func parseToMovie(data: NSDictionary) -> Movie
+    public static func parseToMovie(data: NSDictionary) -> Movie?
     {
-        let movie = Movie()
-        movie.id = (data.value(forKey: "id") as! Int)
-        movie.title = (data.value(forKey: "title") as! String)
-        movie.releaseDate = (data.value(forKey: "release_date") as! String)
-        movie.overview = (data.value(forKey: "overview") as! String)
-        movie.posterPath = "https://image.tmdb.org/t/p/w500\(data.value(forKey: "poster_path") as? String ?? String())"
-        movie.voteCount = (data.value(forKey: "vote_count") as! Int)
-        movie.voteAverage = (data.value(forKey: "vote_average") as! Double)
-        return movie
+        if data.value(forKey: "id") == nil{return nil}
+        else
+        {
+            let movie = Movie()
+            movie.id = (data.value(forKey: "id") as! Int)
+            movie.title = (data.value(forKey: "title") as! String)
+            movie.releaseDate = (data.value(forKey: "release_date") as! String)
+            movie.overview = (data.value(forKey: "overview") as! String)
+            if let poster = data.value(forKey: "poster_path")
+            {
+                movie.posterPath = "https://image.tmdb.org/t/p/w500\(poster)"
+            }
+            movie.voteCount = (data.value(forKey: "vote_count") as! Int)
+            movie.voteAverage = (data.value(forKey: "vote_average") as! Double)
+            return movie
+        }
     }
     
-    public static func parseToMovieDetails(data: NSDictionary) -> Movie
+    public static func parseToMovieDetails(data: NSDictionary) -> Movie?
     {
-        let movie = Movie()
-        movie.id = (data.value(forKey: "id") as! Int)
-        movie.title = (data.value(forKey: "title") as! String)
-        movie.releaseDate = (data.value(forKey: "release_date") as! String)
-        movie.overview = (data.value(forKey: "overview") as! String)
-        movie.posterPath = "https://image.tmdb.org/t/p/w500\(data.value(forKey: "poster_path") as? String ?? String())"
-        movie.voteCount = data.value(forKey: "vote_count") as? Int
-        movie.voteAverage = data.value(forKey: "vote_average") as? Double ?? 0
-
-        movie.genres = []
-        let genres = data.value(forKey: "genres") as! NSArray
-        for g in genres
+        if data.value(forKey: "id") == nil {return nil}
+        else
         {
-            let genre = g as! NSDictionary
-            movie.genres?.append(genre.value(forKey: "name") as! String)
+            let movie = Movie()
+            movie.id = (data.value(forKey: "id") as! Int)
+            movie.title = (data.value(forKey: "title") as! String)
+            movie.releaseDate = (data.value(forKey: "release_date") as! String)
+            movie.overview = (data.value(forKey: "overview") as! String)
+            movie.posterPath = "https://image.tmdb.org/t/p/w500\(data.value(forKey: "poster_path") as? String ?? String())"
+            movie.voteCount = data.value(forKey: "vote_count") as? Int
+            movie.voteAverage = data.value(forKey: "vote_average") as? Double ?? 0
+            movie.genres = []
+            let genres = data.value(forKey: "genres") as! NSArray
+            for g in genres
+            {
+                let genre = g as! NSDictionary
+                movie.genres?.append(genre.value(forKey: "name") as! String)
+            }
+            if let runtime = data.value(forKey: "runtime") as? Int
+            {
+                movie.runTime = runtime
+            }
+            movie.popularity = (data.value(forKey: "popularity") as! Double)
+            return movie
         }
-        if let runtime = data.value(forKey: "runtime") as? Int
-        {
-            movie.runTime = runtime
-        }
-        movie.popularity = (data.value(forKey: "popularity") as! Double)
-        return movie
     }
     
     public static func parseToTV(data: NSDictionary) -> TV
@@ -73,7 +83,7 @@ class ParseJson
         return cast
     }
     
-    public static func parseToVideo(data: NSDictionary) -> Video
+    /*public static func parseToVideo(data: NSDictionary) -> Video
     {
         let video = Video()
         video.youTuebeId = data.value(forKey: "key") as? String
@@ -81,7 +91,7 @@ class ParseJson
         video.site = data.value(forKey: "site") as? String ?? "n/a"
         video.size = data.value(forKey: "size") as? Int ?? 0
         return video
-    }
+    }*/
     
     public static func parseToTVDetails(data: NSDictionary) -> TV
     {
@@ -128,5 +138,4 @@ class ParseJson
         season.posterPath = "https://image.tmdb.org/t/p/w500\(data.value(forKey: "poster_path") as? String ?? String())"
         return season
     }
-   
 }

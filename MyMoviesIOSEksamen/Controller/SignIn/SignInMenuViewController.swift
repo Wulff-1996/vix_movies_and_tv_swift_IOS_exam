@@ -8,10 +8,12 @@
 
 import UIKit
 
-class SignInMenuViewController: UIViewController {
+class SignInMenuViewController: UIViewController
+{
 
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

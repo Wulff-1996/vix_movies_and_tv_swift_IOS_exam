@@ -7,14 +7,31 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class Video: NSObject
+class Video: Mappable
 {
+    var id: String?
     var youTuebeId: String? 
     var name: String?
     var site: String?
     var size: Int?
     var type: String?
     
-    override init() {}
+    required init?(map: Map)
+    {
+        if map.JSON["id"] == nil
+        {
+            return nil
+        }
+    }
+    
+    func mapping(map: Map)
+    {
+        id <- map["id"]
+        youTuebeId <- map["key"]
+        name <- map["name"]
+        site <- map["site"]
+        type <- map["type"]
+    }
 }

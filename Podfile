@@ -13,5 +13,5 @@ target 'MyMoviesIOSEksamen' do
 	pod 'NavigationDrawer'
 	pod 'DrawerView'
   pod 'YoutubePlayer-in-WKWebView', '~> 0.2.0'
-
+  pod 'ObjectMapper', '~> 3.4'
 end

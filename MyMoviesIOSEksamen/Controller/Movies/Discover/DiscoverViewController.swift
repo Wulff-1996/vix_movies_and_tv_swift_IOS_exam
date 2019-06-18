@@ -5,28 +5,16 @@
 //  Created by Jakob Wulff on 10/05/2019.
 //  Copyright © 2019 Jakob Wulff. All rights reserved.
 //
-
-class Global
-{
-    var entertainment = Entertainment()
-}
-
-var global = Global()
-
 import UIKit
 import Firebase
 import NavigationDrawer
 
-class DiscoverViewController: UIViewController,
-    UICollectionViewDelegate,
-    UICollectionViewDataSource,
-    UICollectionViewDelegateFlowLayout
+class DiscoverViewController: UIViewController
 {
     let interactor = Interactor()
     @IBOutlet weak var mCollectionView: UICollectionView!
     @IBOutlet weak var currentSelectedType: UIButton!
-    
-    //  fetch data from API veriables
+        
     var entertainmentType = Constants.entertainmentTypes.MOVIES
     var category = Constants.movieCategories.POPULAR
     
@@ -41,6 +29,7 @@ class DiscoverViewController: UIViewController,
     let tvRepo = TVRepository()
     
     var shouldBeUpdated = false
+    let userDefault = UserDefaults()
     
     override func viewDidLoad()
     {
@@ -48,12 +37,11 @@ class DiscoverViewController: UIViewController,
         self.mCollectionView.delegate = self
         self.mCollectionView.dataSource = self
         
+        self.entertainmentType = userDefault.string(forKey: "ENTERTAINMENT_TYPE") ?? Constants.entertainmentTypes.MOVIES
+        self.category = userDefault.string(forKey: "CATEGORY") ?? Constants.movieCategories.POPULAR
+        
         self.currentSelectedType.setTitle("\(self.entertainmentType) -> \(self.category)", for: .normal)
-        movieRepo.getAll(category: self.category, forPage: self.currentPage)
-        { (movies) in
-            self.entertainments = movies
-            self.reloadCollectionView()
-        }
+        fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -134,19 +122,20 @@ class DiscoverViewController: UIViewController,
             })
         }
     }
-    
-    
-    ///////////////   Collectionview  //////////
-    func numberOfSections(in collectionView: UICollectionView) -> Int { return 1}
+}
 
+extension DiscoverViewController: UICollectionViewDataSource
+{
+    func numberOfSections(in collectionView: UICollectionView) -> Int { return 1}
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-       return self.entertainments.count
+        return self.entertainments.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as! MovieCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as! EntertainmentCell
         
         //  see if the next page is reached
         updatePage(row: indexPath.row)
@@ -154,65 +143,37 @@ class DiscoverViewController: UIViewController,
         // Configure the cell
         if let path = entertainments[indexPath.row].posterPath
         {
-            if !path.isEmpty
-            {
-                let url = URL(string: "\(path)")!
-                ImageService.getImage(withUrl: url)
-                { image in
-                    cell.posterImageview.image = image
-                }
-            }
-            else
-            {
-                cell.posterImageview.image = UIImage(named: "placeholderimage.jpg")
+            let url = URL(string: "\(path)")!
+            ImageService.getImage(withUrl: url)
+            { image in
+                cell.posterImageview.image = image
             }
         }
-        
+        else
+        {
+            cell.posterImageview.image = UIImage(named: "placeholderimage.jpg")
+        }
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        let noOfCellsInRow = 3
-        
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let totalSpace = flowLayout.sectionInset.left
-            + flowLayout.sectionInset.right
-            + (flowLayout.minimumInteritemSpacing * CGFloat(noOfCellsInRow - 1))
-        
-        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(noOfCellsInRow))
-        
-        return CGSize(width: size, height: 200)
-    }
-    
+}
+
+extension DiscoverViewController : UICollectionViewDelegate
+{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         self.selectedEntertainment = self.entertainments[indexPath.row]
         performSegue(withIdentifier: "showDetails", sender: nil)
     }
-    
-    ////////// Button actions   ////////////////
-    
-    @IBAction func homeButtonPressed(_ sender: UIBarButtonItem)
+}
+
+extension DiscoverViewController: UICollectionViewDelegateFlowLayout
+{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        performSegue(withIdentifier: "showMenu", sender: nil)
-    }
-    
-    //Pan Gesture to slide the menu from Certain Direction
-    @IBAction func edgePanGesture(sender: UIScreenEdgePanGestureRecognizer)
-    {
-        let translation = sender.translation(in: view)
+        let noOfCellsInRow = 3
+        let size = Int((collectionView.bounds.width) / CGFloat(noOfCellsInRow))
         
-        let progress = MenuHelper.calculateProgress(translationInView: translation, viewBounds: view.bounds, direction: .Right)
-        
-        MenuHelper.mapGestureStateToInteractor(
-            gestureState: sender.state,
-            progress: progress,
-            interactor: interactor)
-        {
-                self.performSegue(withIdentifier: "showMenu", sender: nil)
-        }
+        return CGSize(width: size, height: 200)
     }
 }
 

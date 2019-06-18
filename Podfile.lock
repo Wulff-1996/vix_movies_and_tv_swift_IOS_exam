@@ -70,6 +70,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - NavigationDrawer (1.0.0)
+  - ObjectMapper (3.4.2)
   - YoutubePlayer-in-WKWebView (0.2.5)
 
 DEPENDENCIES:
@@ -79,6 +80,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - NavigationDrawer
+  - ObjectMapper (~> 3.4)
   - YoutubePlayer-in-WKWebView (~> 0.2.0)
 
 SPEC REPOS:
@@ -98,6 +100,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - nanopb
     - NavigationDrawer
+    - ObjectMapper
     - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
@@ -116,8 +119,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NavigationDrawer: bc637c0a1700b04f8cd9a5e88b709f6793ca6ac6
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
 
-PODFILE CHECKSUM: a23ecc003b2dcf64ae31b175eee477cd3207a9f8
+PODFILE CHECKSUM: 9e622b487545e8bea6c08d2b224c26628fdd60e1
 
 COCOAPODS: 1.6.1

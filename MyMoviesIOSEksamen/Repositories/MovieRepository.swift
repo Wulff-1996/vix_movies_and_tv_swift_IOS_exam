@@ -15,17 +15,20 @@ class MovieRepository
     private let LANGUANGE: String = "language=en-US"
     private let PAGE: String = "page="
     
-    public func getAll(category: String, forPage: Int, completion: @escaping (_ movies: [Movie]) -> ())
+    public func getAll(category: String, forPage: Int, completion: @escaping ([Movie]) -> ())
     {
         let url = NSURL(string: "\(API_ENDPOINT)\(category)?\(API_KEY)&\(LANGUANGE)&\(PAGE)\(forPage)")
         DataTask.createDataTask(url: url! as URL)
-        { (result) in
-            if let data = result?.value(forKey: "results") as? NSArray
+        { (json) in
+            if let data = json?.value(forKey: "results") as? NSArray
             {
                 var movies = [Movie]()
                 for m in data
                 {
-                    movies.append(ParseJson.parseToMovie(data: m as! NSDictionary))
+                    if let movie = ParseJson.parseToMovie(data: m as! NSDictionary)
+                    {
+                        movies.append(movie)
+                    }
                 }
                 completion(movies)
             }
@@ -37,11 +40,12 @@ class MovieRepository
         let url = NSURL(string: "\(API_ENDPOINT)\(id)?\(API_KEY)&\(LANGUANGE)")
         DataTask.createDataTask(url: url! as URL)
         { (result) in
-            
             if let data = result
             {
-                let movie = ParseJson.parseToMovieDetails(data: data)
-                completion(movie)
+                if let movie = ParseJson.parseToMovieDetails(data: data)
+                {
+                    completion(movie)
+                }
             }
         }
     }
@@ -56,7 +60,10 @@ class MovieRepository
                 var movies = [Movie]()
                 for m in data
                 {
-                    movies.append(ParseJson.parseToMovie(data: m as! NSDictionary))
+                    if let movie = ParseJson.parseToMovie(data: m as! NSDictionary)
+                    {
+                        movies.append(movie)
+                    }
                 }
                 completion(movies)
             }
@@ -88,9 +95,12 @@ class MovieRepository
             if let data = result?.value(forKey: "results") as? NSArray
             {
                 var videos = [Video]()
-                for video in data
+                for entry in data
                 {
-                    videos.append(ParseJson.parseToVideo(data: video as! NSDictionary))
+                    if let video = Video(JSON: (entry as! [String : Any]))
+                    {
+                        videos.append(video)
+                    }
                 }
                 completion(videos)
             }

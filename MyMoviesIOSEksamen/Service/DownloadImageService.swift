@@ -46,6 +46,5 @@ class ImageService
             downloadImage(withUrl: url, completion: completion)
         }
     }
-    
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieCell: UICollectionViewCell
+class Entertak: UICollectionViewCell
 {
     
     @IBOutlet weak var posterImageview: UIImageView!

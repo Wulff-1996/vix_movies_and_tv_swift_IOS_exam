@@ -187,7 +187,7 @@
             </objects>
             <point key="canvasLocation" x="3342" y="856"/>
         </scene>
-        <!--Similar-->
+        <!--Similir-->
         <scene sceneID="ZY1-fq-9lE">
             <objects>
                 <collectionViewController id="3qA-hi-N9y" customClass="RecommendationsCollectionViewController" customModule="MyMoviesIOSEksamen" customModuleProvider="target" sceneMemberID="viewController">
@@ -202,7 +202,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="ZDT-Us-Enw" customClass="MovieCell" customModule="MyMoviesIOSEksamen" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="ZDT-Us-Enw" customClass="EntertainmentCell" customModule="MyMoviesIOSEksamen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -234,7 +234,7 @@
                             <outlet property="delegate" destination="3qA-hi-N9y" id="S7M-A7-y8e"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Similar" image="recommendationsIcon" id="voR-5e-9eS"/>
+                    <tabBarItem key="tabBarItem" title="Similir" image="recommendationsIcon" id="voR-5e-9eS"/>
                     <connections>
                         <segue destination="NiH-rQ-Iyv" kind="show" identifier="showDetails" id="Gd8-yV-hl1"/>
                     </connections>
@@ -448,11 +448,11 @@
         <scene sceneID="cnM-OM-lTn">
             <objects>
                 <tabBarController storyboardIdentifier="MoviesDrawerViewController" id="nVE-Pf-VMe" customClass="CustomTabBarController" customModule="MyMoviesIOSEksamen" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="V1s-yI-Oyh" customClass="CustomTabBar" customModule="MyMoviesIOSEksamen" customModuleProvider="target">
+                    <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="V1s-yI-Oyh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="height">
                                 <real key="value" value="50"/>
@@ -473,11 +473,12 @@
         <scene sceneID="IMp-T4-MSd">
             <objects>
                 <tabBarController storyboardIdentifier="TVsDrawerViewController" id="8pz-Ok-noy" customClass="CustomTabBarController" customModule="MyMoviesIOSEksamen" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XuV-kJ-jZf" customClass="CustomTabBar" customModule="MyMoviesIOSEksamen" customModuleProvider="target">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XuV-kJ-jZf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="height">
                                 <real key="value" value="50"/>
@@ -494,7 +495,7 @@
             </objects>
             <point key="canvasLocation" x="6997" y="856"/>
         </scene>
-        <!--Cast-->
+        <!--Seasons-->
         <scene sceneID="Xaq-sI-Nv5">
             <objects>
                 <tableViewController id="ILw-cW-L9j" customClass="TVSeasonsTableViewController" customModule="MyMoviesIOSEksamen" customModuleProvider="target" sceneMemberID="viewController">
@@ -543,7 +544,7 @@
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gv4-Lp-Jis">
                                             <rect key="frame" x="194" y="94" width="192" height="133"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <mutableString key="text">Trouble is brewing in the Seven Kingdoms of Westeros. For the driven inhabitants of this visionary world, control of Westeros' Iron Throne holds the lure of great power. But in a land where the seasons can last a lifetime, winter is coming...and beyond the Great Wall that protects them, an ancient evil has returned. In Season One, the story centers on three primary areas: the Stark and the Lannister families, whose designs on controlling the throne threaten a tenuous peace; the dragon princess Daenerys, heir to the former dynasty, who waits just over the Narrow Sea with her malevolent brother Viserys; and the Great Wall--a massive barrier of ice where a forgotten danger is stirring.</mutableString>
+                                            <string key="text">Trouble is brewing in the Seven Kingdoms of Westeros. For the driven inhabitants of this visionary world, control of Westeros' Iron Throne holds the lure of great power. But in a land where the seasons can last a lifetime, winter is coming...and beyond the Great Wall that protects them, an ancient evil has returned. In Season One, the story centers on three primary areas: the Stark and the Lannister families, whose designs on controlling the throne threaten a tenuous peace; the dragon princess Daenerys, heir to the former dynasty, who waits just over the Narrow Sea with her malevolent brother Viserys; and the Great Wall--a massive barrier of ice where a forgotten danger is stirring.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -576,7 +577,7 @@
                             <outlet property="delegate" destination="ILw-cW-L9j" id="ALg-du-gdi"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Cast" image="list_icon" id="4t0-Yc-vME"/>
+                    <tabBarItem key="tabBarItem" title="Seasons" image="list_icon" id="4t0-Yc-vME"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jw6-uQ-71d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -597,7 +598,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="3Dh-Ew-bmx" customClass="MovieCell" customModule="MyMoviesIOSEksamen" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="3Dh-Ew-bmx" customClass="EntertainmentCell" customModule="MyMoviesIOSEksamen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -630,10 +631,13 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Similar" image="recommendationsIcon" id="cgJ-in-qso"/>
+                    <connections>
+                        <segue destination="wcZ-90-EXd" kind="show" identifier="showDetails" id="NAV-2H-4nF"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7w-8Y-1ft" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6968" y="1580"/>
+            <point key="canvasLocation" x="6966.666666666667" y="1579.6875"/>
         </scene>
         <!--About-->
         <scene sceneID="xnB-Vc-1JO">
@@ -797,6 +801,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISr-FL-IkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6160.8695652173919" y="1579.6875"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="3ND-BM-P2b">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Details" id="wcZ-90-EXd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SMf-HF-PQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6967" y="1979"/>
         </scene>
     </scenes>
     <resources>

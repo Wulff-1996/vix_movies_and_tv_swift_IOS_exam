@@ -11,7 +11,8 @@ import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController
+{
     
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
@@ -30,7 +31,8 @@ class SignInViewController: UIViewController {
         {
             if let email = tfEmail.text, let password = tfPassword.text
             {
-                Auth.auth().signIn(withEmail: email, password: password) { (user,error ) in
+                Auth.auth().signIn(withEmail: email, password: password)
+                { (user,error ) in
                     if error != nil
                     {
                         let alertBox = AlertBox.createAlertBox(title: "Account not recognized", message: error!.localizedDescription)
