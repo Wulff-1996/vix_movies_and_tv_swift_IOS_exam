@@ -31,6 +31,8 @@ class DiscoverViewController: UIViewController
     var shouldBeUpdated = false
     let userDefault = UserDefaults()
     
+    var discoverDelegate: DiscoverDelegate!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -67,8 +69,9 @@ class DiscoverViewController: UIViewController
         if let slidingPandel = segue.destination as? SlidingViewController
         {
             slidingPandel.interactor = self.interactor
-            slidingPandel.discoverViewController = self
             slidingPandel.transitioningDelegate = self
+            slidingPandel.discoverDelegate = self
+            slidingPandel.entertainmentType = self.entertainmentType
         }
     }
     
@@ -120,6 +123,36 @@ class DiscoverViewController: UIViewController
                     self.entertainments.append(contentsOf: tvs)
                     self.reloadCollectionView()
             })
+        }
+    }
+}
+
+extension DiscoverViewController: DiscoverDelegate
+{
+    func didSelectEntertainmentType(entertainmentType: String)
+    {
+        if self.entertainmentType != entertainmentType
+        {
+            self.entertainmentType = entertainmentType
+            shouldBeUpdated.toggle()
+            resetPage()
+            resetMoviesAndTvs()
+            category = Constants.movieCategories.POPULAR
+            userDefault.set(entertainmentType, forKey: "ENTERTAINMENT_TYPE")
+            userDefault.set(Constants.movieCategories.POPULAR, forKey:"CATEGORY")
+        }
+    }
+    
+    func didSelectCategory(category: String)
+    {
+        if self.category != category
+        {
+            //  update the origin view
+            self.category = category
+            self.shouldBeUpdated.toggle()
+            self.resetPage()
+            self.resetMoviesAndTvs()
+            self.userDefault.set(category, forKey: "CATEGORY")
         }
     }
 }
